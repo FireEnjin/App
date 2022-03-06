@@ -1,5 +1,5 @@
 {
-  "name": "madnessbar",
+  "name": "@fireenjin/app",
   "scripts": {
     "build": "stencil build",
     "docs": "stencil build --docs",
