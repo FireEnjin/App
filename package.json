@@ -2,8 +2,6 @@
   "name": "@fireenjin/app",
   "scripts": {
     "build": "stencil build",
-    "b": "npm run build",
-    "b:api": "cd functions && npm run build",
     "docs": "stencil build --docs",
     "inlineCss": "node tasks/inlineCss",
     "prerender": "stencil build --prerender",
@@ -38,6 +36,7 @@
     "@fireenjin/editor": "^1.0.29",
     "@fireenjin/sdk": "^1.2.48",
     "@ionic/core": "^6.0.10",
+    "@stencil/router": "^1.0.1",
     "@stencil/store": "^1.5.0",
     "@tauri-apps/api": "^1.0.0-rc.1",
     "fuse.js": "^6.5.3",

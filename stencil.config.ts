@@ -12,7 +12,7 @@ export const config: Config = {
       //   swSrc: "src/sw.js",
       //   globPatterns: ["**/*.{js,css,json,html,ico,png}"],
       // },
-      baseUrl: "https://theflood.team",
+      baseUrl: "https://fireenjin.com",
       copy: [
         {
           src: "robots.txt",

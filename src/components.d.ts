@@ -6,32 +6,58 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface FireenjinRouter {
+    interface FireenjinApp {
+    }
+    interface PageHome {
+    }
+    interface PageProjects {
     }
 }
 declare global {
-    interface HTMLFireenjinRouterElement extends Components.FireenjinRouter, HTMLStencilElement {
+    interface HTMLFireenjinAppElement extends Components.FireenjinApp, HTMLStencilElement {
     }
-    var HTMLFireenjinRouterElement: {
-        prototype: HTMLFireenjinRouterElement;
-        new (): HTMLFireenjinRouterElement;
+    var HTMLFireenjinAppElement: {
+        prototype: HTMLFireenjinAppElement;
+        new (): HTMLFireenjinAppElement;
+    };
+    interface HTMLPageHomeElement extends Components.PageHome, HTMLStencilElement {
+    }
+    var HTMLPageHomeElement: {
+        prototype: HTMLPageHomeElement;
+        new (): HTMLPageHomeElement;
+    };
+    interface HTMLPageProjectsElement extends Components.PageProjects, HTMLStencilElement {
+    }
+    var HTMLPageProjectsElement: {
+        prototype: HTMLPageProjectsElement;
+        new (): HTMLPageProjectsElement;
     };
     interface HTMLElementTagNameMap {
-        "fireenjin-router": HTMLFireenjinRouterElement;
+        "fireenjin-app": HTMLFireenjinAppElement;
+        "page-home": HTMLPageHomeElement;
+        "page-projects": HTMLPageProjectsElement;
     }
 }
 declare namespace LocalJSX {
-    interface FireenjinRouter {
+    interface FireenjinApp {
+    }
+    interface PageHome {
+    }
+    interface PageProjects {
     }
     interface IntrinsicElements {
-        "fireenjin-router": FireenjinRouter;
+        "fireenjin-app": FireenjinApp;
+        "page-home": PageHome;
+        "page-projects": PageProjects;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "fireenjin-router": LocalJSX.FireenjinRouter & JSXBase.HTMLAttributes<HTMLFireenjinRouterElement>;
+            "fireenjin-app": LocalJSX.FireenjinApp & JSXBase.HTMLAttributes<HTMLFireenjinAppElement>;
+            "page-home": LocalJSX.PageHome & JSXBase.HTMLAttributes<HTMLPageHomeElement>;
+            "page-projects": LocalJSX.PageProjects & JSXBase.HTMLAttributes<HTMLPageProjectsElement>;
         }
     }
 }
