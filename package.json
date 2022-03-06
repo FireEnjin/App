@@ -34,7 +34,7 @@
     "workbox-build": "^4.3.1"
   },
   "dependencies": {
-    "@fireenjin/components": "^1.1.17",
+    "@fireenjin/components": "^1.1.18",
     "@fireenjin/editor": "^1.0.29",
     "@fireenjin/sdk": "^1.2.48",
     "@ionic/core": "^6.0.10",
