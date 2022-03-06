@@ -13,5 +13,25 @@
   },
   "dependencies": {
     "@tauri-apps/api": "^1.0.0-rc.1"
-  }
+  },
+  "version": "1.0.0",
+  "description": "FrameWork => FramePlay",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fireenjin/app.git"
+  },
+  "keywords": [
+    "FireBase",
+    "FireStore",
+    "FireEnjin",
+    "Madness",
+    "Labs"
+  ],
+  "author": "Madness Labs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fireenjin/app/issues"
+  },
+  "homepage": "https://github.com/fireenjin/app#readme"
 }
