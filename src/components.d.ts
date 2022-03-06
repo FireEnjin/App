@@ -6,32 +6,32 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface MadnessbarRouter {
+    interface FireenjinRouter {
     }
 }
 declare global {
-    interface HTMLMadnessbarRouterElement extends Components.MadnessbarRouter, HTMLStencilElement {
+    interface HTMLFireenjinRouterElement extends Components.FireenjinRouter, HTMLStencilElement {
     }
-    var HTMLMadnessbarRouterElement: {
-        prototype: HTMLMadnessbarRouterElement;
-        new (): HTMLMadnessbarRouterElement;
+    var HTMLFireenjinRouterElement: {
+        prototype: HTMLFireenjinRouterElement;
+        new (): HTMLFireenjinRouterElement;
     };
     interface HTMLElementTagNameMap {
-        "madnessbar-router": HTMLMadnessbarRouterElement;
+        "fireenjin-router": HTMLFireenjinRouterElement;
     }
 }
 declare namespace LocalJSX {
-    interface MadnessbarRouter {
+    interface FireenjinRouter {
     }
     interface IntrinsicElements {
-        "madnessbar-router": MadnessbarRouter;
+        "fireenjin-router": FireenjinRouter;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "madnessbar-router": LocalJSX.MadnessbarRouter & JSXBase.HTMLAttributes<HTMLMadnessbarRouterElement>;
+            "fireenjin-router": LocalJSX.FireenjinRouter & JSXBase.HTMLAttributes<HTMLFireenjinRouterElement>;
         }
     }
 }

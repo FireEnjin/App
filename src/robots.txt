@@ -1,0 +1,7 @@
+User-agent: Googlebot
+Disallow: /templates/
+
+User-agent: *
+Allow: /
+
+Sitemap: http://fireenjin.com/sitemap.xml
