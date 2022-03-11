@@ -6,20 +6,12 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface FireenjinApp {
-    }
     interface PageHome {
     }
     interface PageProjects {
     }
 }
 declare global {
-    interface HTMLFireenjinAppElement extends Components.FireenjinApp, HTMLStencilElement {
-    }
-    var HTMLFireenjinAppElement: {
-        prototype: HTMLFireenjinAppElement;
-        new (): HTMLFireenjinAppElement;
-    };
     interface HTMLPageHomeElement extends Components.PageHome, HTMLStencilElement {
     }
     var HTMLPageHomeElement: {
@@ -33,20 +25,16 @@ declare global {
         new (): HTMLPageProjectsElement;
     };
     interface HTMLElementTagNameMap {
-        "fireenjin-app": HTMLFireenjinAppElement;
         "page-home": HTMLPageHomeElement;
         "page-projects": HTMLPageProjectsElement;
     }
 }
 declare namespace LocalJSX {
-    interface FireenjinApp {
-    }
     interface PageHome {
     }
     interface PageProjects {
     }
     interface IntrinsicElements {
-        "fireenjin-app": FireenjinApp;
         "page-home": PageHome;
         "page-projects": PageProjects;
     }
@@ -55,7 +43,6 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "fireenjin-app": LocalJSX.FireenjinApp & JSXBase.HTMLAttributes<HTMLFireenjinAppElement>;
             "page-home": LocalJSX.PageHome & JSXBase.HTMLAttributes<HTMLPageHomeElement>;
             "page-projects": LocalJSX.PageProjects & JSXBase.HTMLAttributes<HTMLPageProjectsElement>;
         }
