@@ -1,5 +1,5 @@
 import { Config } from "@stencil/core";
-// import nodePolyfills from "rollup-plugin-node-polyfills";
+import nodePolyfills from "rollup-plugin-node-polyfills";
 
 // https://stenciljs.com/docs/config
 
@@ -31,7 +31,7 @@ export const config: Config = {
     // },
   ],
   rollupPlugins: {
-    // after: [nodePolyfills()],
+    after: [nodePolyfills()],
   },
   sourceMap: true,
   globalScript: "src/app.ts",
