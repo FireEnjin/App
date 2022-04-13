@@ -24,7 +24,7 @@
     "tauri": "tauri"
   },
   "devDependencies": {
-    "@fireenjin/cli": "^1.0.14",
+    "@fireenjin/cli": "^1.0.19",
     "@stencil/core": "2.13.0",
     "@tauri-apps/cli": "^1.0.0-rc.8",
     "husky": "^7.0.4",
@@ -33,10 +33,10 @@
     "workbox-build": "^4.3.1"
   },
   "dependencies": {
-    "@fireenjin/components": "^1.2.13",
-    "@fireenjin/editor": "^1.0.30",
-    "@fireenjin/sdk": "^1.2.50",
-    "@ionic/core": "^6.0.14",
+    "@fireenjin/components": "^1.2.16",
+    "@fireenjin/editor": "^1.0.31",
+    "@fireenjin/sdk": "^1.2.51",
+    "@ionic/core": "^6.1.0",
     "@stencil/router": "^1.0.1",
     "@stencil/store": "^1.5.0",
     "@tauri-apps/api": "^1.0.0-rc.3",
