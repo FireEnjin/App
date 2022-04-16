@@ -57,10 +57,10 @@ export class PageLogin implements ComponentInterface {
                 url: state?.config?.url,
                 dynamicLinkDomain: state?.config?.dynamicLinkDomain,
                 iOS: {
-                  bundleId: "net.madnessenjin.gerdau",
+                  bundleId: "net.madnessenjin.fireenjin",
                 },
                 android: {
-                  packageName: "net.madnessenjin.gerdau",
+                  packageName: "net.madnessenjin.fireenjin",
                   installApp: false,
                   minimumVersion: "12",
                 },
@@ -156,7 +156,7 @@ export class PageLogin implements ComponentInterface {
                   type="email"
                   label="Email Address"
                   labelPosition="stacked"
-                  placeholder="j.doe@gerdau.com"
+                  placeholder="j.doe@fireenjin.com"
                   value={this.email}
                   required
                 />
