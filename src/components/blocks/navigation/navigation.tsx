@@ -35,18 +35,19 @@ export class BlockNavigation {
   setItemClasses(link: string | string[], exact = false) {
     return typeof link === "string"
       ? exact && link === this.activeLink
-        ? "active"
+        ? "ion-activated"
         : !exact && this.activeLink && this.activeLink.indexOf(link) >= 0
-        ? "active"
+        ? "ion-activated"
         : null
       : link.indexOf(this.activeLink) >= 0
-      ? "active"
+      ? "ion-activated"
       : null;
   }
 
   render() {
     return (
       <ion-list>
+        <ion-img src="./assets/icon/icon.svg" />
         {(this.links || []).map((link) => (
           <ion-item
             lines="none"

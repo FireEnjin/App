@@ -5,24 +5,35 @@ block-navigation {
     background: var(--ion-color-primary);
 }
 
-block-navigation ion-item {
-    min-width: 200px;
+block-navigation ion-list > ion-img {
+    width: 80%;
+    margin: 20px auto;
+    display: block;
+    background-color: var(--ion-background-color);
+    border-radius: 100%;
+    padding: 10%;
 }
 
-block-navigation .active {
+block-navigation ion-item {
+    min-width: 200px;
+    color: var(--ion-color-dark-shade);
+}
+
+block-navigation ion-item:not(.ion-activated):hover,
+block-navigation ion-item:not(.ion-activated):hover ion-icon {
+    color: var(--ion-color-primary);
+    background: var(--ion-color-secondary-shade);
+}
+
+block-navigation ion-item.ion-activated {
     position: relative;
-    background: var(--ion-col);
     background: var(--ion-background-color);
 }
 
-block-navigation .active,
-block-navigation .active ion-icon {
+block-navigation ion-item.ion-activated,
+block-navigation ion-item.ion-activated ion-icon {
+    --ion-text-color: var(--ion-color-primary);
     color: var(--ion-color-primary);
-}
-
-block-navigation ion-item:not(.active):hover,
-block-navigation ion-item:not(.active):hover ion-icon {
-    color: var(--ion-color-light);
 }
 
 @media only screen and (max-width: 500px) {

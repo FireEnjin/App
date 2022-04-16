@@ -94,6 +94,9 @@
   :root {
     --ion-background-color: var(--ion-color-dark);
   }
+  .main-content {
+    --ion-text-color: #ffffff;
+  }
 }
 
 noscript {
