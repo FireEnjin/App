@@ -12,7 +12,7 @@ export class BlockNavigation {
     activeClassExactMatch?: boolean;
   }[] = [
     {
-      label: "Dashboard",
+      label: "Home",
       icon: "home",
       href: "/",
     },
