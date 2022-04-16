@@ -98,9 +98,8 @@ export class PageLogin implements ComponentInterface {
     return [
       <app-header pageTitle="Login"></app-header>,
       <ion-content class="ion-padding">
-        <img
-          src="./assets/icon/icon.svg"
-          style={{ margin: "0 auto", display: "block" }}
+        <fireenjin-app-icon
+          style={{ width: "90%", maxWidth: "300px", margin: "20px auto" }}
         />
         {this.error && (
           <ion-label
