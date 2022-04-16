@@ -1,0 +1,32 @@
+block-navigation {
+    height: 100vh;
+    width: var(--navigation-width, 200px);
+    display: inline-block;
+    background: var(--ion-color-primary);
+}
+
+block-navigation ion-item {
+    min-width: 200px;
+}
+
+block-navigation .active {
+    position: relative;
+    background: var(--ion-col);
+    background: var(--ion-background-color);
+}
+
+block-navigation .active,
+block-navigation .active ion-icon {
+    color: var(--ion-color-primary);
+}
+
+block-navigation ion-item:not(.active):hover,
+block-navigation ion-item:not(.active):hover ion-icon {
+    color: var(--ion-color-light);
+}
+
+@media only screen and (max-width: 500px) {
+    :root {
+        --navigation-width: 55px;
+    }
+}

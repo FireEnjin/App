@@ -6,12 +6,34 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface BlockNavigation {
+        "links": {
+    label?: string;
+    icon?: string;
+    href?: string;
+    activeClassExactMatch?: boolean;
+  }[];
+    }
+    interface ModalAddProject {
+    }
     interface PageHome {
     }
     interface PageProjects {
     }
 }
 declare global {
+    interface HTMLBlockNavigationElement extends Components.BlockNavigation, HTMLStencilElement {
+    }
+    var HTMLBlockNavigationElement: {
+        prototype: HTMLBlockNavigationElement;
+        new (): HTMLBlockNavigationElement;
+    };
+    interface HTMLModalAddProjectElement extends Components.ModalAddProject, HTMLStencilElement {
+    }
+    var HTMLModalAddProjectElement: {
+        prototype: HTMLModalAddProjectElement;
+        new (): HTMLModalAddProjectElement;
+    };
     interface HTMLPageHomeElement extends Components.PageHome, HTMLStencilElement {
     }
     var HTMLPageHomeElement: {
@@ -25,16 +47,30 @@ declare global {
         new (): HTMLPageProjectsElement;
     };
     interface HTMLElementTagNameMap {
+        "block-navigation": HTMLBlockNavigationElement;
+        "modal-add-project": HTMLModalAddProjectElement;
         "page-home": HTMLPageHomeElement;
         "page-projects": HTMLPageProjectsElement;
     }
 }
 declare namespace LocalJSX {
+    interface BlockNavigation {
+        "links"?: {
+    label?: string;
+    icon?: string;
+    href?: string;
+    activeClassExactMatch?: boolean;
+  }[];
+    }
+    interface ModalAddProject {
+    }
     interface PageHome {
     }
     interface PageProjects {
     }
     interface IntrinsicElements {
+        "block-navigation": BlockNavigation;
+        "modal-add-project": ModalAddProject;
         "page-home": PageHome;
         "page-projects": PageProjects;
     }
@@ -43,6 +79,8 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "block-navigation": LocalJSX.BlockNavigation & JSXBase.HTMLAttributes<HTMLBlockNavigationElement>;
+            "modal-add-project": LocalJSX.ModalAddProject & JSXBase.HTMLAttributes<HTMLModalAddProjectElement>;
             "page-home": LocalJSX.PageHome & JSXBase.HTMLAttributes<HTMLPageHomeElement>;
             "page-projects": LocalJSX.PageProjects & JSXBase.HTMLAttributes<HTMLPageProjectsElement>;
         }

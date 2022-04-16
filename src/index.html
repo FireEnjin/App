@@ -45,7 +45,10 @@
         <ion-route url="/" component="page-home"></ion-route>
         <ion-route url="/projects" component="page-projects"></ion-route>
       </ion-router>
-      <ion-router-outlet></ion-router-outlet>
+      <main>
+        <block-navigation></block-navigation>
+        <div class="main-content"><ion-router-outlet></ion-router-outlet></div>
+      </main>
     </ion-app>
   </body>
 </html>
