@@ -47,7 +47,7 @@ export class BlockNavigation {
   render() {
     return (
       <ion-list>
-        <ion-img src="./assets/icon/icon.svg" />
+        <fireenjin-app-icon showBackground />
         {(this.links || []).map((link) => (
           <ion-item
             lines="none"

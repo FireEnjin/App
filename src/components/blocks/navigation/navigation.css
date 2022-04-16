@@ -5,15 +5,6 @@ block-navigation {
     background: var(--ion-color-primary);
 }
 
-block-navigation ion-list > ion-img {
-    width: 80%;
-    margin: 20px auto;
-    display: block;
-    background-color: var(--ion-background-color);
-    border-radius: 100%;
-    padding: 10%;
-}
-
 block-navigation ion-item {
     min-width: 200px;
     color: var(--ion-color-dark-shade);

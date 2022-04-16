@@ -15,6 +15,9 @@ export namespace Components {
     activeClassExactMatch?: boolean;
   }[];
     }
+    interface FireenjinAppIcon {
+        "showBackground": boolean;
+    }
     interface ModalAddProject {
     }
     interface PageHome {
@@ -32,6 +35,12 @@ declare global {
     var HTMLBlockNavigationElement: {
         prototype: HTMLBlockNavigationElement;
         new (): HTMLBlockNavigationElement;
+    };
+    interface HTMLFireenjinAppIconElement extends Components.FireenjinAppIcon, HTMLStencilElement {
+    }
+    var HTMLFireenjinAppIconElement: {
+        prototype: HTMLFireenjinAppIconElement;
+        new (): HTMLFireenjinAppIconElement;
     };
     interface HTMLModalAddProjectElement extends Components.ModalAddProject, HTMLStencilElement {
     }
@@ -59,6 +68,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "block-navigation": HTMLBlockNavigationElement;
+        "fireenjin-app-icon": HTMLFireenjinAppIconElement;
         "modal-add-project": HTMLModalAddProjectElement;
         "page-home": HTMLPageHomeElement;
         "page-login": HTMLPageLoginElement;
@@ -74,6 +84,9 @@ declare namespace LocalJSX {
     activeClassExactMatch?: boolean;
   }[];
     }
+    interface FireenjinAppIcon {
+        "showBackground"?: boolean;
+    }
     interface ModalAddProject {
     }
     interface PageHome {
@@ -86,6 +99,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "block-navigation": BlockNavigation;
+        "fireenjin-app-icon": FireenjinAppIcon;
         "modal-add-project": ModalAddProject;
         "page-home": PageHome;
         "page-login": PageLogin;
@@ -97,6 +111,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "block-navigation": LocalJSX.BlockNavigation & JSXBase.HTMLAttributes<HTMLBlockNavigationElement>;
+            "fireenjin-app-icon": LocalJSX.FireenjinAppIcon & JSXBase.HTMLAttributes<HTMLFireenjinAppIconElement>;
             "modal-add-project": LocalJSX.ModalAddProject & JSXBase.HTMLAttributes<HTMLModalAddProjectElement>;
             "page-home": LocalJSX.PageHome & JSXBase.HTMLAttributes<HTMLPageHomeElement>;
             "page-login": LocalJSX.PageLogin & JSXBase.HTMLAttributes<HTMLPageLoginElement>;
