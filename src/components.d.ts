@@ -16,7 +16,7 @@ export namespace Components {
   }[];
     }
     interface FireenjinAppIcon {
-        "showBackground": boolean;
+        "showBackground"?: boolean;
     }
     interface ModalAddProject {
     }

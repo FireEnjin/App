@@ -5,6 +5,10 @@ block-navigation {
     background: var(--ion-color-primary);
 }
 
+block-navigation fireenjin-app-icon {
+    padding: 10%;
+}
+
 block-navigation ion-item {
     min-width: 200px;
     color: var(--ion-color-dark-shade);
