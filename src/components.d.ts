@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AuthService } from "@fireenjin/sdk";
+import { AuthService, FireEnjinTriggerInput } from "@fireenjin/sdk";
 export namespace Components {
     interface BlockNavigation {
         "links": {
@@ -20,11 +20,10 @@ export namespace Components {
     }
     interface ModalAddProject {
     }
-    interface PageHome {
-    }
-    interface PageLogin {
+    interface ModalLogin {
         "auth": AuthService;
-        "email": string;
+    }
+    interface PageHome {
     }
     interface PageProjects {
     }
@@ -48,17 +47,17 @@ declare global {
         prototype: HTMLModalAddProjectElement;
         new (): HTMLModalAddProjectElement;
     };
+    interface HTMLModalLoginElement extends Components.ModalLogin, HTMLStencilElement {
+    }
+    var HTMLModalLoginElement: {
+        prototype: HTMLModalLoginElement;
+        new (): HTMLModalLoginElement;
+    };
     interface HTMLPageHomeElement extends Components.PageHome, HTMLStencilElement {
     }
     var HTMLPageHomeElement: {
         prototype: HTMLPageHomeElement;
         new (): HTMLPageHomeElement;
-    };
-    interface HTMLPageLoginElement extends Components.PageLogin, HTMLStencilElement {
-    }
-    var HTMLPageLoginElement: {
-        prototype: HTMLPageLoginElement;
-        new (): HTMLPageLoginElement;
     };
     interface HTMLPageProjectsElement extends Components.PageProjects, HTMLStencilElement {
     }
@@ -70,8 +69,8 @@ declare global {
         "block-navigation": HTMLBlockNavigationElement;
         "fireenjin-app-icon": HTMLFireenjinAppIconElement;
         "modal-add-project": HTMLModalAddProjectElement;
+        "modal-login": HTMLModalLoginElement;
         "page-home": HTMLPageHomeElement;
-        "page-login": HTMLPageLoginElement;
         "page-projects": HTMLPageProjectsElement;
     }
 }
@@ -89,11 +88,11 @@ declare namespace LocalJSX {
     }
     interface ModalAddProject {
     }
-    interface PageHome {
-    }
-    interface PageLogin {
+    interface ModalLogin {
         "auth"?: AuthService;
-        "email"?: string;
+    }
+    interface PageHome {
+        "onFireenjinTrigger"?: (event: CustomEvent<FireEnjinTriggerInput>) => void;
     }
     interface PageProjects {
     }
@@ -101,8 +100,8 @@ declare namespace LocalJSX {
         "block-navigation": BlockNavigation;
         "fireenjin-app-icon": FireenjinAppIcon;
         "modal-add-project": ModalAddProject;
+        "modal-login": ModalLogin;
         "page-home": PageHome;
-        "page-login": PageLogin;
         "page-projects": PageProjects;
     }
 }
@@ -113,8 +112,8 @@ declare module "@stencil/core" {
             "block-navigation": LocalJSX.BlockNavigation & JSXBase.HTMLAttributes<HTMLBlockNavigationElement>;
             "fireenjin-app-icon": LocalJSX.FireenjinAppIcon & JSXBase.HTMLAttributes<HTMLFireenjinAppIconElement>;
             "modal-add-project": LocalJSX.ModalAddProject & JSXBase.HTMLAttributes<HTMLModalAddProjectElement>;
+            "modal-login": LocalJSX.ModalLogin & JSXBase.HTMLAttributes<HTMLModalLoginElement>;
             "page-home": LocalJSX.PageHome & JSXBase.HTMLAttributes<HTMLPageHomeElement>;
-            "page-login": LocalJSX.PageLogin & JSXBase.HTMLAttributes<HTMLPageLoginElement>;
             "page-projects": LocalJSX.PageProjects & JSXBase.HTMLAttributes<HTMLPageProjectsElement>;
         }
     }

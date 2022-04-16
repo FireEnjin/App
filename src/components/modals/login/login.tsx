@@ -8,17 +8,17 @@ import {
 } from "@stencil/core";
 import { loadingController } from "@ionic/core";
 
-import { AuthService } from "@fireenjin/sdk";
 import state from "../../../store";
+import { AuthService } from "@fireenjin/sdk";
 
 @Component({
-  tag: "page-login",
+  tag: "modal-login",
   styleUrl: "login.css",
 })
-export class PageLogin implements ComponentInterface {
+export class ModalLogin implements ComponentInterface {
   @Prop() auth: AuthService;
-  @Prop({ mutable: true }) email: string;
 
+  @State() email: string;
   @State() error: string;
   @State() isAwaitingEmail = false;
   @State() isUsingEmailLink = false;
