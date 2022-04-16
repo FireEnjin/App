@@ -8,7 +8,7 @@ export class PageHome {
   render() {
     return (
       <ion-content>
-        <ion-img src="./assets/icon/icon.png" />
+        <ion-button href="/login">Login Now</ion-button>
       </ion-content>
     );
   }

@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { AuthService } from "@fireenjin/sdk";
 export namespace Components {
     interface BlockNavigation {
         "links": {
@@ -17,6 +18,10 @@ export namespace Components {
     interface ModalAddProject {
     }
     interface PageHome {
+    }
+    interface PageLogin {
+        "auth": AuthService;
+        "email": string;
     }
     interface PageProjects {
     }
@@ -40,6 +45,12 @@ declare global {
         prototype: HTMLPageHomeElement;
         new (): HTMLPageHomeElement;
     };
+    interface HTMLPageLoginElement extends Components.PageLogin, HTMLStencilElement {
+    }
+    var HTMLPageLoginElement: {
+        prototype: HTMLPageLoginElement;
+        new (): HTMLPageLoginElement;
+    };
     interface HTMLPageProjectsElement extends Components.PageProjects, HTMLStencilElement {
     }
     var HTMLPageProjectsElement: {
@@ -50,6 +61,7 @@ declare global {
         "block-navigation": HTMLBlockNavigationElement;
         "modal-add-project": HTMLModalAddProjectElement;
         "page-home": HTMLPageHomeElement;
+        "page-login": HTMLPageLoginElement;
         "page-projects": HTMLPageProjectsElement;
     }
 }
@@ -66,12 +78,17 @@ declare namespace LocalJSX {
     }
     interface PageHome {
     }
+    interface PageLogin {
+        "auth"?: AuthService;
+        "email"?: string;
+    }
     interface PageProjects {
     }
     interface IntrinsicElements {
         "block-navigation": BlockNavigation;
         "modal-add-project": ModalAddProject;
         "page-home": PageHome;
+        "page-login": PageLogin;
         "page-projects": PageProjects;
     }
 }
@@ -82,6 +99,7 @@ declare module "@stencil/core" {
             "block-navigation": LocalJSX.BlockNavigation & JSXBase.HTMLAttributes<HTMLBlockNavigationElement>;
             "modal-add-project": LocalJSX.ModalAddProject & JSXBase.HTMLAttributes<HTMLModalAddProjectElement>;
             "page-home": LocalJSX.PageHome & JSXBase.HTMLAttributes<HTMLPageHomeElement>;
+            "page-login": LocalJSX.PageLogin & JSXBase.HTMLAttributes<HTMLPageLoginElement>;
             "page-projects": LocalJSX.PageProjects & JSXBase.HTMLAttributes<HTMLPageProjectsElement>;
         }
     }
