@@ -94,67 +94,69 @@ export class PageTemplate {
     };
     return [
       <ion-content>
-        <fireenjin-mx-editor
-          class={{
-            "is-on-canvas": ["contract", "pdf", "email"].includes(
-              this.template?.type
-            ),
-          }}
-          ref={(el) => (this.editorEl = el)}
-          templateData={this.template?.sampleData}
-          isPreviewing={state?.isPreviewing}
-          templateId={this.templateId}
-          partials={state?.partials || []}
-          helpers={{
-            formatUSD: (amount) => {
-              const formatter = new Intl.NumberFormat("en-US", {
-                style: "currency",
-                currency: "USD",
-                minimumFractionDigits: 2,
-              });
-
-              return formatter.format(amount ? amount : 0);
-            },
-            logic: (context, rules, tempData) =>
-              jsonLogic.apply(
-                JSON.parse(rules.replace('"@tempData"', tempData)),
-                {
-                  ...context,
-                  tempData,
-                }
+        {Build?.isBrowser && (
+          <fireenjin-mx-editor
+            class={{
+              "is-on-canvas": ["contract", "pdf", "email"].includes(
+                this.template?.type
               ),
-          }}
-          types={[
-            {
-              label: "Component",
-              value: "component",
-            },
-            {
-              label: "Email",
-              value: "email",
-            },
-            {
-              label: "Contract",
-              value: "contract",
-            },
-            {
-              label: "PDF",
-              value: "pdf",
-            },
-            {
-              label: "Feed Card",
-              value: "feed",
-            },
-            {
-              label: "Message",
-              value: "message",
-            },
-            {
-              label: "Web Page",
-              value: "page",
-            },
-          ]}
-        />
+            }}
+            ref={(el) => (this.editorEl = el)}
+            templateData={this.template?.sampleData}
+            isPreviewing={state?.isPreviewing}
+            templateId={this.templateId}
+            partials={state?.partials || []}
+            helpers={{
+              formatUSD: (amount) => {
+                const formatter = new Intl.NumberFormat("en-US", {
+                  style: "currency",
+                  currency: "USD",
+                  minimumFractionDigits: 2,
+                });
+
+                return formatter.format(amount ? amount : 0);
+              },
+              logic: (context, rules, tempData) =>
+                jsonLogic.apply(
+                  JSON.parse(rules.replace('"@tempData"', tempData)),
+                  {
+                    ...context,
+                    tempData,
+                  }
+                ),
+            }}
+            types={[
+              {
+                label: "Component",
+                value: "component",
+              },
+              {
+                label: "Email",
+                value: "email",
+              },
+              {
+                label: "Contract",
+                value: "contract",
+              },
+              {
+                label: "PDF",
+                value: "pdf",
+              },
+              {
+                label: "Feed Card",
+                value: "feed",
+              },
+              {
+                label: "Message",
+                value: "message",
+              },
+              {
+                label: "Web Page",
+                value: "page",
+              },
+            ]}
+          />
+        )}
       </ion-content>,
       <ion-footer>
         <fireenjin-chip-bar>

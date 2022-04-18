@@ -13,6 +13,6 @@
     "jsx": "react",
     "jsxFactory": "h",
   },
-  "include": ["src"],
+  "include": ["src", "../template"],
   "exclude": ["node_modules"],
 }
