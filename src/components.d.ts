@@ -8,6 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AuthService, DatabaseService, FireEnjin, FireEnjinTriggerInput } from "@fireenjin/sdk";
 export namespace Components {
     interface BlockNavigation {
+        "db": DatabaseService;
         "links": {
     label?: string;
     icon?: string;
@@ -97,6 +98,7 @@ declare global {
 }
 declare namespace LocalJSX {
     interface BlockNavigation {
+        "db"?: DatabaseService;
         "links"?: {
     label?: string;
     icon?: string;

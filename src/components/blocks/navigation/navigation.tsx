@@ -1,10 +1,13 @@
-import { Component, h, Listen, Prop, State } from "@stencil/core";
+import { DatabaseService } from "@fireenjin/sdk";
+import { Build, Component, h, Listen, Prop, State } from "@stencil/core";
+import state from "../../../store";
 
 @Component({
   tag: "block-navigation",
   styleUrl: "navigation.css",
 })
 export class BlockNavigation {
+  @Prop() db: DatabaseService;
   @Prop() links: {
     label?: string;
     icon?: string;
@@ -35,6 +38,21 @@ export class BlockNavigation {
   })
   onRouteDidChange(event) {
     this.activeLink = event.detail.to;
+  }
+
+  @Listen("load", { target: "window" })
+  async onLoad() {
+    if (!Build?.isBrowser) return;
+    try {
+      const templatesQuery = await this.db.getCollection("templates");
+      state.templates = (templatesQuery?.docs || []).map((templateDoc) => ({
+        id: templateDoc.id,
+        ...templateDoc.data(),
+      }));
+      console.log(state.templates);
+    } catch (error) {
+      console.log("Error getting templates", error);
+    }
   }
 
   setItemClasses(link: string | string[], exact = false) {
