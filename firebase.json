@@ -29,6 +29,10 @@
       {
         "source": "/upload",
         "function": "upload"
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
       }
     ]
   },
