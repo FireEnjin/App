@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AuthService, FireEnjinTriggerInput } from "@fireenjin/sdk";
+import { AuthService, DatabaseService, FireEnjin, FireEnjinTriggerInput } from "@fireenjin/sdk";
 export namespace Components {
     interface BlockNavigation {
         "links": {
@@ -26,6 +26,13 @@ export namespace Components {
     interface PageHome {
     }
     interface PageProjects {
+    }
+    interface PageTemplate {
+        "db": DatabaseService;
+        "fireenjin": FireEnjin;
+        "templateId": string;
+    }
+    interface PageTemplateList {
     }
 }
 declare global {
@@ -65,6 +72,18 @@ declare global {
         prototype: HTMLPageProjectsElement;
         new (): HTMLPageProjectsElement;
     };
+    interface HTMLPageTemplateElement extends Components.PageTemplate, HTMLStencilElement {
+    }
+    var HTMLPageTemplateElement: {
+        prototype: HTMLPageTemplateElement;
+        new (): HTMLPageTemplateElement;
+    };
+    interface HTMLPageTemplateListElement extends Components.PageTemplateList, HTMLStencilElement {
+    }
+    var HTMLPageTemplateListElement: {
+        prototype: HTMLPageTemplateListElement;
+        new (): HTMLPageTemplateListElement;
+    };
     interface HTMLElementTagNameMap {
         "block-navigation": HTMLBlockNavigationElement;
         "fireenjin-app-icon": HTMLFireenjinAppIconElement;
@@ -72,6 +91,8 @@ declare global {
         "modal-login": HTMLModalLoginElement;
         "page-home": HTMLPageHomeElement;
         "page-projects": HTMLPageProjectsElement;
+        "page-template": HTMLPageTemplateElement;
+        "page-template-list": HTMLPageTemplateListElement;
     }
 }
 declare namespace LocalJSX {
@@ -96,6 +117,14 @@ declare namespace LocalJSX {
     }
     interface PageProjects {
     }
+    interface PageTemplate {
+        "db"?: DatabaseService;
+        "fireenjin"?: FireEnjin;
+        "onFireenjinTrigger"?: (event: CustomEvent<FireEnjinTriggerInput>) => void;
+        "templateId"?: string;
+    }
+    interface PageTemplateList {
+    }
     interface IntrinsicElements {
         "block-navigation": BlockNavigation;
         "fireenjin-app-icon": FireenjinAppIcon;
@@ -103,6 +132,8 @@ declare namespace LocalJSX {
         "modal-login": ModalLogin;
         "page-home": PageHome;
         "page-projects": PageProjects;
+        "page-template": PageTemplate;
+        "page-template-list": PageTemplateList;
     }
 }
 export { LocalJSX as JSX };
@@ -115,6 +146,8 @@ declare module "@stencil/core" {
             "modal-login": LocalJSX.ModalLogin & JSXBase.HTMLAttributes<HTMLModalLoginElement>;
             "page-home": LocalJSX.PageHome & JSXBase.HTMLAttributes<HTMLPageHomeElement>;
             "page-projects": LocalJSX.PageProjects & JSXBase.HTMLAttributes<HTMLPageProjectsElement>;
+            "page-template": LocalJSX.PageTemplate & JSXBase.HTMLAttributes<HTMLPageTemplateElement>;
+            "page-template-list": LocalJSX.PageTemplateList & JSXBase.HTMLAttributes<HTMLPageTemplateListElement>;
         }
     }
 }

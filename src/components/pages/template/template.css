@@ -1,0 +1,79 @@
+page-template .tabs-bar {
+  background-color: var(--ion-background-color, #fff) !important;
+}
+
+page-template floodteam-floating-button ion-fab {
+  margin-top: 20px;
+}
+
+page-template .ce-toolbar {
+  background-color: var(--ion-background-color);
+}
+
+page-template .ce-toolbox {
+  background: var(--ion-background-color) !important;
+}
+
+page-template ion-item {
+  --background: transparent;
+}
+
+page-template .gjs-editor-cont {
+  top: 50px;
+}
+
+page-template .sample-editor {
+  display: block;
+  height: 300px;
+  position: relative;
+  --min-height: 300px;
+}
+
+page-template ion-item.sample-editor ion-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--ion-color-medium-shade) !important;
+  font-size: 0.75em !important;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: arial;
+  display: block;
+  background: transparent;
+  text-align: left;
+  padding: 0 0 8px 0;
+  font-family: var(--ion-font-family);
+}
+
+page-template .preview-wrapper {
+  margin: 30px auto;
+}
+
+page-template fireenjin-editor {
+  padding-left: 0 !important;
+  --editor-background: var(--ion-color-base);
+  --editor-color: var(--ion-text-color);
+  --editor-color-shadow: var(--ion-color-base-dark);
+  --editor-color-punctuation: rgba(var(--ion-color-secondary-rgb), 0.6);
+  --editor-color-property: var(--ion-color-primary);
+  --ion-color-light-shade: var(--ion-color-base);
+  --ion-color-light-tint: var(--ion-color-base-dark);
+  --ion-background-color: transparent;
+}
+
+page-template fireenjin-editor fireenjin-code-editor {
+  min-height: calc(100vh - 130px) !important;
+}
+
+page-template .pdf-wrapper {
+  background-color: #fff;
+  --ion-text-color: #000;
+}
+
+page-template fireenjin-mx-editor.is-on-canvas #preview {
+  background-color: #fff;
+  --ion-text-color: #000;
+  color: var(--ion-text-color);
+  bottom: auto;
+  height: auto;
+}

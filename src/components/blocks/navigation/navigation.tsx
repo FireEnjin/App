@@ -21,6 +21,11 @@ export class BlockNavigation {
       icon: "grid",
       href: "/projects",
     },
+    {
+      label: "Templates",
+      icon: "create",
+      href: "/templates",
+    },
   ];
 
   @State() activeLink: string;

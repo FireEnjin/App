@@ -5,12 +5,13 @@ import { AuthService, DatabaseService } from "@fireenjin/sdk";
 import { modalController, setupConfig } from "@ionic/core";
 import { FireEnjinTriggerInput } from "@fireenjin/sdk";
 import env from "./helpers/env";
+import state from "./store";
 
 setupConfig({
   mode: "md",
 });
 
-if (typeof document?.addEventListener === "function") {
+if (typeof window?.addEventListener === "function") {
   const app = initializeApp(env("firebase", {}));
   const auth = new AuthService({
     app,
@@ -22,6 +23,7 @@ if (typeof document?.addEventListener === "function") {
   const db = new DatabaseService({
     app,
   });
+
   document.addEventListener(
     "fireenjinTrigger",
     async (event: CustomEvent<FireEnjinTriggerInput>) => {
@@ -38,4 +40,16 @@ if (typeof document?.addEventListener === "function") {
       }
     }
   );
+
+  window.addEventListener("load", async () => {
+    try {
+      const templatesQuery = await db.getCollection("templates");
+      state.templates = (templatesQuery?.docs || []).map((templateDoc) => ({
+        id: templateDoc.id,
+        ...templateDoc.data(),
+      }));
+    } catch (error) {
+      console.log("Error getting templates", error);
+    }
+  });
 }
