@@ -5,6 +5,7 @@ import { AuthService, DatabaseService } from "@fireenjin/sdk";
 import { modalController, setupConfig } from "@ionic/core";
 import { FireEnjinTriggerInput } from "@fireenjin/sdk";
 import env from "./helpers/env";
+import cleanObjectOfReferences from "./helpers/cleanObjectOfReferences";
 
 setupConfig({
   mode: "md",
@@ -26,6 +27,21 @@ if (typeof window?.addEventListener === "function") {
 
     const navigationEl = document.querySelector("block-navigation");
     navigationEl.db = db;
+
+    document.addEventListener("fireenjinSubmit", async (event: CustomEvent) => {
+      console.log(event);
+      if (event?.detail?.endpoint === "addTemplate") {
+        await db.add(
+          "templates",
+          await cleanObjectOfReferences(event?.detail?.params?.data)
+        );
+      } else if (event?.detail?.endpoint === "addProject") {
+        await db.add(
+          "projects",
+          await cleanObjectOfReferences(event?.detail?.data)
+        );
+      }
+    });
 
     document.addEventListener(
       "fireenjinTrigger",

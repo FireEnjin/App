@@ -53,6 +53,16 @@ export class BlockNavigation {
     } catch (error) {
       console.log("Error getting templates", error);
     }
+    try {
+      const projectsQuery = await this.db.getCollection("projects");
+      state.projects = (projectsQuery?.docs || []).map((projectDoc) => ({
+        id: projectDoc.id,
+        ...projectDoc.data(),
+      }));
+      console.log(state.projects);
+    } catch (error) {
+      console.log("Error getting projects", error);
+    }
   }
 
   setItemClasses(link: string | string[], exact = false) {

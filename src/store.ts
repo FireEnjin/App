@@ -35,6 +35,9 @@ const { state, onChange } = createStore({
   localStorage.getItem("fireenjin:templates")
     ? JSON.parse(localStorage.getItem("fireenjin:templates"))
     : []) as any[],
+  projects: (localStorage?.getItem && localStorage.getItem("fireenjin:projects")
+    ? JSON.parse(localStorage.getItem("fireenjin:projects"))
+    : []) as any[],
   partials: (localStorage?.getItem && localStorage.getItem("fireenjin:partials")
     ? JSON.parse(localStorage.getItem("fireenjin:partials"))
     : []) as any[],
@@ -73,6 +76,10 @@ onChange("isPreviewing", (value) => {
 
 onChange("feed", (value) => {
   localStorage.setItem("fireenjin:feed", JSON.stringify(value));
+});
+
+onChange("projects", (value) => {
+  localStorage.setItem("fireenjin:projects", JSON.stringify(value));
 });
 
 onChange("pins", (value) => {
