@@ -11,6 +11,7 @@ export class PageHome {
   render() {
     return (
       <ion-content>
+        <h1>It's Time.</h1>
         <ion-button
           onClick={() =>
             this.fireenjinTrigger.emit({

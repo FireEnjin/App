@@ -5,7 +5,6 @@ import { AuthService, DatabaseService } from "@fireenjin/sdk";
 import { modalController, setupConfig } from "@ionic/core";
 import { FireEnjinTriggerInput, FireEnjin } from "@fireenjin/sdk";
 import env from "./helpers/env";
-import cleanObjectOfReferences from "./helpers/cleanObjectOfReferences";
 import state from "./store";
 
 setupConfig({
@@ -25,7 +24,7 @@ if (typeof window?.addEventListener === "function") {
     const db = new DatabaseService({
       app,
     });
-    const enjin = new FireEnjin({
+    new FireEnjin({
       connections: [
         {
           name: "default",
