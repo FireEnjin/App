@@ -16,7 +16,7 @@
       ]
     },
     {
-      "target": "live",
+      "site": "fireenjin-live",
       "public": "www",
       "ignore": [
         "firebase.json",
