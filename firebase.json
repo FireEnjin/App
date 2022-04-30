@@ -1,32 +1,50 @@
 {
-  "hosting": {
-    "public": "www",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "/api/**",
-        "function": "api"
-      },
-      {
-        "source": "/graphql",
-        "function": "graphql"
-      },
-      {
-        "source": "/render/**",
-        "function": "render"
-      },
-      {
-        "source": "/upload",
-        "function": "upload"
-      },
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ]
-  }
+  "hosting": [
+    {
+      "target": "docs",
+      "public": "docs",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    },
+    {
+      "target": "live",
+      "public": "www",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "/api/**",
+          "function": "api"
+        },
+        {
+          "source": "/graphql",
+          "function": "graphql"
+        },
+        {
+          "source": "/render/**",
+          "function": "render"
+        },
+        {
+          "source": "/upload",
+          "function": "upload"
+        },
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
 }

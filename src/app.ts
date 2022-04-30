@@ -3,16 +3,17 @@ import "@fireenjin/components";
 import { initializeApp } from "@firebase/app";
 import { AuthService, DatabaseService } from "@fireenjin/sdk";
 import { modalController, setupConfig } from "@ionic/core";
-import { FireEnjinTriggerInput } from "@fireenjin/sdk";
+import { FireEnjinTriggerInput, FireEnjin } from "@fireenjin/sdk";
 import env from "./helpers/env";
 import cleanObjectOfReferences from "./helpers/cleanObjectOfReferences";
+import state from "./store";
 
 setupConfig({
   mode: "md",
 });
 
 if (typeof window?.addEventListener === "function") {
-  window.addEventListener("load", () => {
+  window.addEventListener("load", async () => {
     const app = initializeApp(env("firebase", {}));
     const auth = new AuthService({
       app,
@@ -24,24 +25,36 @@ if (typeof window?.addEventListener === "function") {
     const db = new DatabaseService({
       app,
     });
-
-    const navigationEl = document.querySelector("block-navigation");
-    navigationEl.db = db;
-
-    document.addEventListener("fireenjinSubmit", async (event: CustomEvent) => {
-      console.log(event);
-      if (event?.detail?.endpoint === "addTemplate") {
-        await db.add(
-          "templates",
-          await cleanObjectOfReferences(event?.detail?.params?.data)
-        );
-      } else if (event?.detail?.endpoint === "addProject") {
-        await db.add(
-          "projects",
-          await cleanObjectOfReferences(event?.detail?.data)
-        );
-      }
+    const enjin = new FireEnjin({
+      connections: [
+        {
+          name: "default",
+          type: "graphql",
+          url: "https://fireenjin.com/graphql",
+        },
+      ],
     });
+
+    try {
+      const templatesQuery = await db.getCollection("templates");
+      state.templates = (templatesQuery?.docs || []).map((templateDoc) => ({
+        id: templateDoc.id,
+        ...templateDoc.data(),
+      }));
+      console.log(state.templates);
+    } catch (error) {
+      console.log("Error getting templates", error);
+    }
+    try {
+      const projectsQuery = await db.getCollection("projects");
+      state.projects = (projectsQuery?.docs || []).map((projectDoc) => ({
+        id: projectDoc.id,
+        ...projectDoc.data(),
+      }));
+      console.log(state.projects);
+    } catch (error) {
+      console.log("Error getting projects", error);
+    }
 
     document.addEventListener(
       "fireenjinTrigger",

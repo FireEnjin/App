@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "fireenjin-live"
+  },
+  "targets": {
+    "fireenjin-live": {
+      "hosting": {
+        "docs": [
+          "fireenjin-docs"
+        ],
+        "live": [
+          "fireenjin-live"
+        ]
+      }
+    }
   }
 }
