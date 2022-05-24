@@ -41,10 +41,7 @@ export class PageTemplate {
   onSuccess(event) {
     if (event?.detail?.endpoint === "findTemplate") {
       this.template = event.detail?.data?.template || null;
-    } else if (
-      event?.detail?.endpoint === "addTemplate" &&
-      this.templateId === "new"
-    ) {
+    } else if (event?.detail?.endpoint === "addTemplate" && !this.templateId) {
       const routerEl = document.querySelector("ion-router");
       this.templateId = event?.detail?.data?.addTemplate?.id || "new";
       if (routerEl) routerEl.push(`/templates/${this.templateId}`);

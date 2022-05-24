@@ -33,6 +33,11 @@ export class ModalLogin implements ComponentInterface {
     }
   }
 
+  @Listen("fireenjinSubmit")
+  onSubmit() {
+    this.login("email");
+  }
+
   async presentLoading() {
     const loading = await loadingController.create({
       cssClass: "my-custom-class",
@@ -148,75 +153,73 @@ export class ModalLogin implements ComponentInterface {
             </ion-row>
           </ion-grid>
         ) : (
-          <ion-grid style={{ maxWidth: "500px", margin: "0 auto" }}>
-            <ion-row>
-              <ion-col>
-                <fireenjin-input
-                  name="email"
-                  type="email"
-                  label="Email Address"
-                  labelPosition="stacked"
-                  placeholder="j.doe@fireenjin.com"
-                  value={this.email}
-                  required
-                />
-                {!this.isUsingEmailLink && (
+          <fireenjin-form hideControls>
+            <ion-grid style={{ maxWidth: "500px", margin: "0 auto" }}>
+              <ion-row>
+                <ion-col>
                   <fireenjin-input
-                    name="password"
-                    type="password"
+                    name="email"
+                    type="email"
+                    label="Email Address"
                     labelPosition="stacked"
-                    label="Password"
+                    placeholder="j.doe@fireenjin.com"
+                    value={this.email}
                     required
                   />
-                )}
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                <ion-button
-                  fill="outline"
-                  expand="block"
-                  onClick={() =>
-                    (this.isUsingEmailLink = !this.isUsingEmailLink)
-                  }
-                >
-                  <ion-icon
-                    slot="start"
-                    name={!this.isUsingEmailLink ? "mail" : "lock-closed"}
-                  />
-                  <ion-label>
-                    {this.isUsingEmailLink
-                      ? "Sign-in with Password"
-                      : "Sign-in With Email Link"}
-                  </ion-label>
-                </ion-button>
-              </ion-col>
-              <ion-col>
-                <ion-button
-                  color="warning"
-                  expand="block"
-                  onClick={() => this.login("email")}
-                >
-                  <ion-label>Sign-in</ion-label>
-                  <ion-icon slot="end" name="log-in" />
-                </ion-button>
-              </ion-col>
-            </ion-row>
-            {!this.isUsingEmailLink && (
+                  {!this.isUsingEmailLink && (
+                    <fireenjin-input
+                      name="password"
+                      type="password"
+                      labelPosition="stacked"
+                      label="Password"
+                      required
+                    />
+                  )}
+                </ion-col>
+              </ion-row>
               <ion-row>
                 <ion-col>
                   <ion-button
-                    fill="clear"
-                    color="medium"
+                    fill="outline"
                     expand="block"
-                    onClick={() => this.sendPasswordReset()}
+                    onClick={() =>
+                      (this.isUsingEmailLink = !this.isUsingEmailLink)
+                    }
                   >
-                    Forgot my Password
+                    <ion-icon
+                      slot="start"
+                      name={!this.isUsingEmailLink ? "mail" : "lock-closed"}
+                    />
+                    <ion-label>
+                      {this.isUsingEmailLink
+                        ? "Sign-in with Password"
+                        : "Sign-in With Email Link"}
+                    </ion-label>
+                  </ion-button>
+                </ion-col>
+                <ion-col>
+                  <ion-button color="warning" expand="block" type="submit">
+                    <ion-label>Sign-in</ion-label>
+                    <ion-icon slot="end" name="log-in" />
                   </ion-button>
                 </ion-col>
               </ion-row>
-            )}
-          </ion-grid>
+              {!this.isUsingEmailLink && (
+                <ion-row>
+                  <ion-col>
+                    <ion-button
+                      fill="clear"
+                      color="medium"
+                      expand="block"
+                      onClick={() => this.sendPasswordReset()}
+                    >
+                      Forgot my Password
+                    </ion-button>
+                  </ion-col>
+                </ion-row>
+              )}
+            </ion-grid>
+          </fireenjin-form>
         )}
       </ion-content>,
     ];

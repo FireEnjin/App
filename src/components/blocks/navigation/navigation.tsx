@@ -49,7 +49,6 @@ export class BlockNavigation {
         id: templateDoc.id,
         ...templateDoc.data(),
       }));
-      console.log(state.templates);
     } catch (error) {
       console.log("Error getting templates", error);
     }
@@ -59,7 +58,6 @@ export class BlockNavigation {
         id: projectDoc.id,
         ...projectDoc.data(),
       }));
-      console.log(state.projects);
     } catch (error) {
       console.log("Error getting projects", error);
     }
