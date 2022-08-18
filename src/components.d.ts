@@ -36,6 +36,14 @@ export namespace Components {
     interface PageTemplateList {
     }
 }
+export interface PageHomeCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPageHomeElement;
+}
+export interface PageTemplateCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPageTemplateElement;
+}
 declare global {
     interface HTMLBlockNavigationElement extends Components.BlockNavigation, HTMLStencilElement {
     }
@@ -115,14 +123,14 @@ declare namespace LocalJSX {
         "auth"?: AuthService;
     }
     interface PageHome {
-        "onFireenjinTrigger"?: (event: CustomEvent<FireEnjinTriggerInput>) => void;
+        "onFireenjinTrigger"?: (event: PageHomeCustomEvent<FireEnjinTriggerInput>) => void;
     }
     interface PageProjects {
     }
     interface PageTemplate {
         "db"?: DatabaseService;
         "fireenjin"?: FireEnjin;
-        "onFireenjinTrigger"?: (event: CustomEvent<FireEnjinTriggerInput>) => void;
+        "onFireenjinTrigger"?: (event: PageTemplateCustomEvent<FireEnjinTriggerInput>) => void;
         "templateId"?: string;
     }
     interface PageTemplateList {
