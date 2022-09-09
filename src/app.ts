@@ -4,12 +4,15 @@ import { initializeApp } from "@firebase/app";
 import { AuthService, DatabaseService } from "@fireenjin/sdk";
 import { modalController, setupConfig } from "@ionic/core";
 import { FireEnjinTriggerInput, FireEnjin } from "@fireenjin/sdk";
+import { getSdk } from "./sdk";
 import env from "./helpers/env";
 import state from "./store";
 
 setupConfig({
   mode: "md",
 });
+
+const graphqlUrl = "https://fireenjin.com/graphql";
 
 if (typeof window?.addEventListener === "function") {
   window.addEventListener("load", async () => {
@@ -25,11 +28,12 @@ if (typeof window?.addEventListener === "function") {
       app,
     });
     new FireEnjin({
+      getSdk: getSdk as any,
       connections: [
         {
           name: "default",
           type: "graphql",
-          url: "https://fireenjin.com/graphql",
+          url: graphqlUrl,
         },
       ],
     });
@@ -71,5 +75,25 @@ if (typeof window?.addEventListener === "function") {
         }
       }
     );
+
+    auth.onAuthChanged(async (session) => {
+      console.log(session);
+      state.session = session;
+      if (session) {
+        // LOGGED IN
+        const profile = await db.find("users", session?.uid);
+        if (!profile)
+          await db.add(
+            "users",
+            {
+              id: session?.uid,
+              email: session?.email,
+            },
+            session?.uid
+          );
+      } else {
+        // NOT LOGGED IN
+      }
+    });
   });
 }

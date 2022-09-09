@@ -10,8 +10,12 @@
         ],
         "live": [
           "fireenjin-live"
+        ],
+        "schema": [
+          "fireenjin-schema"
         ]
       }
     }
-  }
+  },
+  "etags": {}
 }

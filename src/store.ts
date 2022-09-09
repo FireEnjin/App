@@ -30,7 +30,10 @@ const { state, onChange } = createStore({
   profile: (localStorage?.getItem && localStorage.getItem("fireenjin:profile")
     ? JSON.parse(localStorage.getItem("fireenjin:profile"))
     : {}) as any,
-  session: null as any,
+  session:
+    localStorage?.getItem && localStorage.getItem("fireenjin:session")
+      ? JSON.parse(localStorage.getItem("fireenjin:session"))
+      : null,
   templates: (localStorage?.getItem &&
   localStorage.getItem("fireenjin:templates")
     ? JSON.parse(localStorage.getItem("fireenjin:templates"))
@@ -64,6 +67,10 @@ const { state, onChange } = createStore({
   localStorage.getItem("fireenjin:isPreviewing")
     ? JSON.parse(localStorage.getItem("fireenjin:isPreviewing"))
     : false) as boolean,
+});
+
+onChange("session", (value) => {
+  localStorage.setItem("fireenjin:session", JSON.stringify(value));
 });
 
 onChange("editorSizes", (value) => {

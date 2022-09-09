@@ -16,6 +16,25 @@
       ]
     },
     {
+      "target": "schema",
+      "public": "schema",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "/graphql",
+          "function": "graphql"
+        },
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    },
+    {
       "site": "fireenjin-live",
       "public": "www",
       "ignore": [
