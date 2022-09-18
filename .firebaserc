@@ -13,6 +13,9 @@
         ],
         "schema": [
           "fireenjin-schema"
+        ],
+        "church-of-nathan": [
+          "church-of-nathan"
         ]
       }
     }

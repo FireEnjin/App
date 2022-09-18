@@ -1,6 +1,21 @@
 {
   "hosting": [
     {
+      "target": "church-of-nathan",
+      "public": "www",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "function": "render"
+        }
+      ]
+    },
+    {
       "target": "docs",
       "public": "docs",
       "ignore": [
