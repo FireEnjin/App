@@ -1,69 +1,41 @@
 {
   "name": "@fireenjin/app",
-  "module": "./dist/index.js",
+  "description": "The PWA for FireEnjin App",
+  "engines": {
+    "node": ">=15.0.0"
+  },
+  "private": true,
   "scripts": {
-    "build": "stencil build",
-    "docs": "stencil build --docs",
-    "inlineCss": "node tasks/inlineCss",
-    "prerender": "stencil build --prerender",
-    "debug": "stencil build --dev --watch --serve --no-open",
-    "deploy": "firebase deploy",
-    "deploy:hosting": "firebase deploy --only hosting",
-    "deploy:live": "npm run env live && npm run build && npm run deploy",
-    "deploy:api": "npm run env live && npm run sdk && firebase deploy --only functions",
-    "emulate": "npm run env local && firebase emulators:start",
-    "env": "fireenjin env",
-    "env:local": "npm run env local && firebase use default",
-    "env:test": "npm run env local && firebase use default",
-    "env:live": "npm run env live && firebase use default",
-    "generate": "stencil generate",
-    "precommit": "npm run build",
-    "prepare": "husky install",
-    "sdk": "cd functions && npm run sdk",
-    "start": "npm run env local && stencil build --dev --watch --serve",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "tauri": "tauri"
+    "build": "qwik build",
+    "build.client": "vite build",
+    "build.preview": "vite build --ssr src/entry.preview.tsx",
+    "build.server": "vite build -c adaptors/static/vite.config.ts",
+    "build.types": "tsc --incremental --noEmit",
+    "dev": "vite --mode ssr",
+    "dev.debug": "node --inspect-brk ./node_modules/vite/bin/vite.js --mode ssr --force",
+    "fmt": "prettier --write .",
+    "fmt.check": "prettier --check .",
+    "lint": "eslint src/**/*.ts*",
+    "preview": "qwik build preview && vite preview --open",
+    "serve": "echo 'Run \"npm run qwik add\" to install a server adaptor'",
+    "start": "vite --open --mode ssr",
+    "qwik": "qwik"
   },
   "devDependencies": {
-    "@fireenjin/cli": "^1.0.22",
-    "@stencil/core": "2.17.4",
-    "@tauri-apps/cli": "^1.0.5",
-    "husky": "^8.0.1",
-    "rollup-plugin-node-polyfills": "^0.2.1",
-    "typescript": "^4.8.3",
-    "workbox-build": "^4.3.1"
-  },
-  "dependencies": {
-    "@fireenjin/components": "^1.3.41",
-    "@fireenjin/editor": "^1.3.15",
-    "@fireenjin/mx": "^1.1.22",
-    "@fireenjin/sdk": "^1.2.61",
-    "@ionic/core": "6.1.5",
-    "@stencil/router": "^1.0.1",
-    "@stencil/store": "^2.0.0",
-    "@tauri-apps/api": "^1.0.2",
-    "fuse.js": "^6.6.2",
-    "graphql-request": "^5.0.0",
-    "papaparse": "^5.3.2"
-  },
-  "version": "1.0.0",
-  "description": "FrameWork => FramePlay",
-  "main": "dist/index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fireenjin/app.git"
-  },
-  "keywords": [
-    "FireBase",
-    "FireStore",
-    "FireEnjin",
-    "Madness",
-    "Labs"
-  ],
-  "author": "Madness Labs",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/fireenjin/app/issues"
-  },
-  "homepage": "https://github.com/fireenjin/app#readme"
+    "@builder.io/qwik": "0.13.3",
+    "@builder.io/qwik-city": "0.0.122",
+    "@fireenjin/cli": "^1.1.5",
+    "@types/eslint": "8.4.9",
+    "@types/node": "latest",
+    "@typescript-eslint/eslint-plugin": "5.42.0",
+    "@typescript-eslint/parser": "5.42.0",
+    "eslint": "8.26.0",
+    "eslint-plugin-qwik": "0.13.3",
+    "firebase-tools": "^11.16.0",
+    "node-fetch": "3.2.10",
+    "prettier": "2.7.1",
+    "typescript": "4.8.4",
+    "vite": "3.2.2",
+    "vite-tsconfig-paths": "3.5.0"
+  }
 }
