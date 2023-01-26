@@ -14,8 +14,6 @@ export class PageHome {
       <ion-content>
         <h1>It's Time.</h1>
         <fireenjin-form
-          fetch="findUser"
-          endpoint="editUser"
           fetchKey="user"
           documentId={state?.session?.uid}
           filterData={["firstName", "lastName", "email"]}

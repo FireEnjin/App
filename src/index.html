@@ -40,21 +40,6 @@
     <noscript>
       <span>i</span> You must have JS enabled to use the FireEnjin app.
     </noscript>
-    <ion-app>
-      <ion-router use-hash="false">
-        <ion-route url="/" component="page-home"></ion-route>
-        <ion-route url="/projects" component="page-projects"></ion-route>
-        <ion-route url="/login" component="page-home"></ion-route>
-        <ion-route url="/templates" component="page-template-list"></ion-route>
-        <ion-route
-          url="/templates/:templateId"
-          component="page-template"
-        ></ion-route>
-      </ion-router>
-      <main>
-        <block-navigation></block-navigation>
-        <div class="main-content"><ion-router-outlet></ion-router-outlet></div>
-      </main>
-    </ion-app>
+    <fireenjin-app-router></fireenjin-app-router>
   </body>
 </html>

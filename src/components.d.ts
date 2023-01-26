@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AuthService, DatabaseService, FireEnjin, FireEnjinTriggerInput } from "@fireenjin/sdk";
+import { FirebaseApp } from "@firebase/app";
 export namespace Components {
     interface BlockNavigation {
         "db": DatabaseService;
@@ -19,6 +20,8 @@ export namespace Components {
     interface FireenjinAppIcon {
         "showBackground"?: boolean;
     }
+    interface FireenjinAppRouter {
+    }
     interface ModalAddProject {
     }
     interface ModalLogin {
@@ -29,6 +32,7 @@ export namespace Components {
     interface PageProjects {
     }
     interface PageTemplate {
+        "app": FirebaseApp;
         "db": DatabaseService;
         "fireenjin": FireEnjin;
         "templateId": string;
@@ -56,6 +60,12 @@ declare global {
     var HTMLFireenjinAppIconElement: {
         prototype: HTMLFireenjinAppIconElement;
         new (): HTMLFireenjinAppIconElement;
+    };
+    interface HTMLFireenjinAppRouterElement extends Components.FireenjinAppRouter, HTMLStencilElement {
+    }
+    var HTMLFireenjinAppRouterElement: {
+        prototype: HTMLFireenjinAppRouterElement;
+        new (): HTMLFireenjinAppRouterElement;
     };
     interface HTMLModalAddProjectElement extends Components.ModalAddProject, HTMLStencilElement {
     }
@@ -96,6 +106,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "block-navigation": HTMLBlockNavigationElement;
         "fireenjin-app-icon": HTMLFireenjinAppIconElement;
+        "fireenjin-app-router": HTMLFireenjinAppRouterElement;
         "modal-add-project": HTMLModalAddProjectElement;
         "modal-login": HTMLModalLoginElement;
         "page-home": HTMLPageHomeElement;
@@ -117,6 +128,8 @@ declare namespace LocalJSX {
     interface FireenjinAppIcon {
         "showBackground"?: boolean;
     }
+    interface FireenjinAppRouter {
+    }
     interface ModalAddProject {
     }
     interface ModalLogin {
@@ -128,6 +141,7 @@ declare namespace LocalJSX {
     interface PageProjects {
     }
     interface PageTemplate {
+        "app"?: FirebaseApp;
         "db"?: DatabaseService;
         "fireenjin"?: FireEnjin;
         "onFireenjinTrigger"?: (event: PageTemplateCustomEvent<FireEnjinTriggerInput>) => void;
@@ -138,6 +152,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "block-navigation": BlockNavigation;
         "fireenjin-app-icon": FireenjinAppIcon;
+        "fireenjin-app-router": FireenjinAppRouter;
         "modal-add-project": ModalAddProject;
         "modal-login": ModalLogin;
         "page-home": PageHome;
@@ -152,6 +167,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "block-navigation": LocalJSX.BlockNavigation & JSXBase.HTMLAttributes<HTMLBlockNavigationElement>;
             "fireenjin-app-icon": LocalJSX.FireenjinAppIcon & JSXBase.HTMLAttributes<HTMLFireenjinAppIconElement>;
+            "fireenjin-app-router": LocalJSX.FireenjinAppRouter & JSXBase.HTMLAttributes<HTMLFireenjinAppRouterElement>;
             "modal-add-project": LocalJSX.ModalAddProject & JSXBase.HTMLAttributes<HTMLModalAddProjectElement>;
             "modal-login": LocalJSX.ModalLogin & JSXBase.HTMLAttributes<HTMLModalLoginElement>;
             "page-home": LocalJSX.PageHome & JSXBase.HTMLAttributes<HTMLPageHomeElement>;

@@ -1,5 +1,6 @@
 import { createStore } from "@stencil/store";
 import env from "./helpers/env";
+import getHandlebarsHelpers from "./helpers/getHandlebarsHelpers";
 
 const { state, onChange } = createStore({
   config: env() as {
@@ -22,6 +23,63 @@ const { state, onChange } = createStore({
     };
     url?: string;
     dynamicLinkDomain?: string;
+  },
+  helpers: getHandlebarsHelpers(),
+  colors: {
+    primary: "#2473bb",
+    "primary-rgb": "36, 115, 187",
+    "primary-contrast": "#ffffff",
+    "primary-contrast-rgb": "255, 255, 255",
+    "primary-shade": "#2065a5",
+    "primary-tint": "#3a81c2",
+    secondary: "#1e3955",
+    "secondary-rgb": "30, 57, 85",
+    "secondary-contrast": "#ffffff",
+    "secondary-contrast-rgb": "255, 255, 255",
+    "secondary-shade": "#1a324b",
+    "secondary-tint": "#354d66",
+    tertiary: "#54b6e7",
+    "tertiary-rgb": "84, 182, 231",
+    "tertiary-contrast": "#ffffff",
+    "tertiary-contrast-rgb": "0, 0, 0",
+    "tertiary-shade": "#4aa0cb",
+    "tertiary-tint": "#65bde9",
+    success: "#79c79d",
+    "success-rgb": "121, 199, 157",
+    "success-contrast": "#000000",
+    "success-contrast-rgb": "0, 0, 0",
+    "success-shade": "#6aaf8a",
+    "success-tint": "#86cda7",
+    warning: "#ffc723",
+    "warning-rgb": "255, 199, 35",
+    "warning-contrast": "#000000",
+    "warning-contrast-rgb": "0, 0, 0",
+    "warning-shade": "#e0af1f",
+    "warning-tint": "#ffcd39",
+    danger: "#db3a5e",
+    "danger-rgb": "219, 58, 94",
+    "danger-contrast": "#ffffff",
+    "danger-contrast-rgb": "255, 255, 255",
+    "danger-shade": "#c13353",
+    "danger-tint": "#df4e6e",
+    dark: "#08141c",
+    "dark-rgb": "8, 20, 28",
+    "dark-contrast": "#ffffff",
+    "dark-contrast-rgb": "255, 255, 255",
+    "dark-shade": "#071219",
+    "dark-tint": "#212c33",
+    medium: "#d8d8d8",
+    "medium-rgb": "190, 190, 190",
+    "medium-contrast": "#000000",
+    "medium-contrast-rgb": "0, 0, 0",
+    "medium-shade": "#bebebe",
+    "medium-tint": "#dcdcdc",
+    light: "#F6F6F6",
+    "light-rgb": "248, 248, 248",
+    "light-contrast": "#000000",
+    "light-contrast-rgb": "0, 0, 0",
+    "light-shade": "#d8d8d8",
+    "light-tint": "#f7f7f7",
   },
   version:
     localStorage?.getItem && localStorage.getItem("fireenjin:version")

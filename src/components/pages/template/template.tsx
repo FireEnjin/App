@@ -1,5 +1,5 @@
 import "@fireenjin/mx";
-import * as jsonLogic from "json-logic-js";
+import { FirebaseApp } from "@firebase/app";
 import {
   DatabaseService,
   FireEnjin,
@@ -31,11 +31,14 @@ export class PageTemplate {
   @Prop() fireenjin: FireEnjin;
   @Prop() templateId: string;
   @Prop() db: DatabaseService;
+  @Prop() app: FirebaseApp;
 
   @State() isLoading = false;
   @State() renderedTemplateHtml: any;
   @State() viewCode = false;
-  @State() template: any;
+  @State() template = (state?.templates || []).find(
+    (template) => template?.id === this.templateId
+  );
 
   @Listen("fireenjinSuccess", { target: "document" })
   onSuccess(event) {
@@ -47,6 +50,18 @@ export class PageTemplate {
       if (routerEl) routerEl.push(`/templates/${this.templateId}`);
     } else if (event?.detail?.endpoint === "editTemplate") {
       if (this.editorEl?.fetchData) this.editorEl.fetchData();
+    }
+  }
+
+  @Listen("fireenjinSubmit")
+  async onSubmit({ detail: { endpoint, id, data } }) {
+    if (endpoint === "editTemplate") {
+      await this.db.update("templates", id, data);
+    } else if (endpoint === "addTemplate") {
+      const newTemplate = await this.db.add("templates", data);
+      document
+        ?.querySelector?.("ion-router")
+        ?.push?.(`/templates/${newTemplate.id}`);
     }
   }
 
@@ -78,8 +93,8 @@ export class PageTemplate {
 
   componentDidLoad() {
     if (!Build?.isBrowser) return;
-    this.db.watchDocument("templates", this.templateId, () => {
-      this.editorEl.fetchData();
+    this.db.watchDocument("templates", this.templateId, ({ data }) => {
+      this.template = data;
     });
   }
 
@@ -93,65 +108,17 @@ export class PageTemplate {
       <ion-content>
         {Build?.isBrowser && (
           <fireenjin-mx-editor
+            app={this.app}
             class={{
               "is-on-canvas": ["contract", "pdf", "email"].includes(
                 this.template?.type
               ),
             }}
+            template={this.template}
+            colors={state.colors}
             ref={(el) => (this.editorEl = el)}
-            templateData={this.template?.sampleData}
-            isPreviewing={state?.isPreviewing}
-            templateId={this.templateId}
-            partials={state?.partials || []}
-            helpers={{
-              formatUSD: (amount) => {
-                const formatter = new Intl.NumberFormat("en-US", {
-                  style: "currency",
-                  currency: "USD",
-                  minimumFractionDigits: 2,
-                });
-
-                return formatter.format(amount ? amount : 0);
-              },
-              logic: (context, rules, tempData) =>
-                jsonLogic.apply(
-                  JSON.parse(rules.replace('"@tempData"', tempData)),
-                  {
-                    ...context,
-                    tempData,
-                  }
-                ),
-            }}
-            types={[
-              {
-                label: "Component",
-                value: "component",
-              },
-              {
-                label: "Email",
-                value: "email",
-              },
-              {
-                label: "Contract",
-                value: "contract",
-              },
-              {
-                label: "PDF",
-                value: "pdf",
-              },
-              {
-                label: "Feed Card",
-                value: "feed",
-              },
-              {
-                label: "Message",
-                value: "message",
-              },
-              {
-                label: "Web Page",
-                value: "page",
-              },
-            ]}
+            templates={state?.templates || []}
+            helpers={state?.helpers}
           />
         )}
       </ion-content>,

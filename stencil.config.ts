@@ -33,7 +33,6 @@ export const config: Config = {
   rollupPlugins: {
     after: [nodePolyfills()],
   },
-  sourceMap: false,
   globalScript: "src/app.ts",
   globalStyle: "src/app.css",
 };
