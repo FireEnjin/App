@@ -2,7 +2,7 @@
   "name": "@fireenjin/app",
   "module": "./dist/index.js",
   "scripts": {
-    "build": "stencil build",
+    "build": "node --max_old_space_size=4096 ./node_modules/@stencil/core/bin/stencil build",
     "docs": "stencil build --docs",
     "inlineCss": "node tasks/inlineCss",
     "prerender": "stencil build --prerender",
