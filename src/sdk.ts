@@ -449,6 +449,7 @@ export type Template = {
   createdBy?: Maybe<User>;
   description?: Maybe<Scalars['String']>;
   editor?: Maybe<Editor>;
+  fetch?: Maybe<Scalars['JSONObject']>;
   footer?: Maybe<Template>;
   frame?: Maybe<Template>;
   head?: Maybe<Scalars['String']>;
@@ -473,6 +474,7 @@ export type TemplateInput = {
   attachments?: InputMaybe<Array<InputMaybe<AttachmentInput>>>;
   description?: InputMaybe<Scalars['String']>;
   editor?: InputMaybe<EditorInput>;
+  fetch?: InputMaybe<Scalars['JSONObject']>;
   footerId?: InputMaybe<Scalars['String']>;
   frameId?: InputMaybe<Scalars['String']>;
   head?: InputMaybe<Scalars['String']>;
