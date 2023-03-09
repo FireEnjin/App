@@ -1,8 +1,7 @@
-export default function getParameter(paramName) {
-  var searchString = window.location.search.substring(1),
-    i,
-    val,
+export default function getParameter(paramName: string) {
+  const searchString = window.location.search.substring(1),
     params = searchString.split("&");
+  let i, val;
 
   for (i = 0; i < params.length; i++) {
     val = params[i].split("=");

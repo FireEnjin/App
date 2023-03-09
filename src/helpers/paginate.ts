@@ -30,7 +30,7 @@ export default async function paginate<T>(
     whereGreaterThanOrEqual: ">=",
     whereArrayContains: "array-contains",
     whereArrayContainsAny: "array-contains-any",
-    whereIn: "in"
+    whereIn: "in",
   };
 
   if (options.orderBy) {
@@ -50,27 +50,25 @@ export default async function paginate<T>(
     "whereGreaterThanOrEqual",
     "whereArrayContains",
     "whereArrayContainsAny",
-    "whereIn"
+    "whereIn",
   ]) {
-    if (options[where]) {
-      options[where] =
-        typeof options[where] === "string"
-          ? JSON.parse(options[where])
-          : options[where];
-      for (const whereKey of Object.keys(options[where])) {
+    let optWhere: any = (options as any)[where];
+    if (optWhere) {
+      optWhere = typeof optWhere === "string" ? JSON.parse(optWhere) : optWhere;
+      for (const whereKey of Object.keys(optWhere)) {
         query = query.where(
           whereKey,
-          operatorMap[where],
-          isValid(parseISO(options[where][whereKey]))
-            ? new Date(Date.parse(options[where][whereKey]))
-            : options[where][whereKey]
+          (operatorMap as any)[where],
+          isValid(parseISO(optWhere[whereKey]))
+            ? new Date(Date.parse(optWhere[whereKey]))
+            : optWhere[whereKey]
         );
       }
     }
   }
 
   if (options.next || options.back) {
-    const params = (options.next ? options.next : options.back).split(",");
+    const params = (options?.next || options?.back || "").split(",");
     let key = 0;
     for (const value of params as any) {
       params[key] = isValid(parseISO(value))

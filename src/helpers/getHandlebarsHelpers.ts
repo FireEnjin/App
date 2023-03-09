@@ -3,12 +3,12 @@ import * as jsonLogic from "json-logic-js";
 
 export default function getHandlebarsHelpers() {
   return {
-    logic: (context, rules, tempData) =>
+    logic: (context: any, rules: any, tempData: any) =>
       jsonLogic.apply(JSON.parse(rules.replace('"@tempData"', tempData)), {
         ...context,
         tempData,
       }),
-    formatUSD: (amount) => {
+    formatUSD: (amount: any) => {
       const formatter = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "USD",
@@ -17,7 +17,7 @@ export default function getHandlebarsHelpers() {
 
       return formatter.format(amount ? amount : 0);
     },
-    date: (str, datePattern = "P", options = {}) => {
+    date: (str: any, datePattern = "P", options = {}) => {
       try {
         const dateObj =
           typeof str === "object" && str?.constructor?.name === "Timestamp"
@@ -32,7 +32,7 @@ export default function getHandlebarsHelpers() {
         return str;
       }
     },
-    toFixed: (str, placesAfterDecimal = "2") => {
+    toFixed: (str: any, placesAfterDecimal = "2") => {
       return parseFloat(str || "0").toFixed(
         parseInt(
           (placesAfterDecimal &&

@@ -4,17 +4,17 @@ export default async function downloadCSV(args: {
   filename?: string;
   data?: any[];
 }) {
-  let filename = args?.filename || "export.csv";
+  const filename = args?.filename || "export.csv";
 
-  let csv = Papa.unparse(args.data);
+  const csv = Papa.unparse(args.data as any);
   if (csv == null) return;
 
-  var blob = new Blob([csv], { type: "text/csv" });
+  const blob = new Blob([csv], { type: "text/csv" });
   if ((window as any)?.navigator?.msSaveOrOpenBlob) {
     // IE hack; see http://msdn.microsoft.com/en-us/library/ie/hh779016.aspx
     (window as any).navigator.msSaveBlob(blob, args.filename);
   } else {
-    var a = window.document.createElement("a");
+    const a = window.document.createElement("a");
     a.href = window.URL.createObjectURL(blob);
     a.download = filename;
     document.body.appendChild(a);
