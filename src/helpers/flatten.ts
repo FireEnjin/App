@@ -1,11 +1,11 @@
-export default function flatten(obj, roots = [], sep = ".") {
+export default function flatten(obj: any, roots: any = [], sep = "."): any {
   return (
     Object
       // find props of given object
       .keys(obj)
       // return an object by iterating props
       .reduce(
-        (memo, prop) =>
+        (memo, prop: any) =>
           Object.assign(
             // create a new object
             {},

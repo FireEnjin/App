@@ -1,4 +1,4 @@
-export default async function injectScript(src) {
+export default async function injectScript(src: string) {
   return new Promise((resolve, reject) => {
     const script = document.createElement("script");
     script.async = true;

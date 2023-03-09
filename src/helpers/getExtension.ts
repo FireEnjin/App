@@ -1,5 +1,5 @@
 export default async function getExtension(path: string) {
-  var basename = path.split(/[\\/]/).pop(), // extract file name from full path ...
+  const basename = path.split(/[\\/]/).pop(), // extract file name from full path ...
     // (supports `\\` and `/` separators)
     pos = basename?.lastIndexOf?.(".") || 0; // get last position of `.`
 

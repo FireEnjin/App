@@ -9,7 +9,12 @@ export default async function uploadFiles(
     path?: string;
   }
 ): Promise<{ success: boolean; name?: string; url?: string; error?: any }[]> {
-  const results = [];
+  const results: {
+    success: boolean;
+    name?: string;
+    url?: string;
+    error?: any;
+  }[] = [];
   const storage = getStorage(app);
   for (const file of files) {
     try {
@@ -30,7 +35,7 @@ export default async function uploadFiles(
         url,
       });
     } catch (error) {
-      results.push({ succes: false, error });
+      results.push({ success: false, error });
     }
   }
 
