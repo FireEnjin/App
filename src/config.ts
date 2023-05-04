@@ -1,6 +1,6 @@
 export default {
-  env: "live",
-  url: "https://fireenjin.com",
+  env: "local",
+  url: "http://localhost:3333",
   functions: {
     url: "https://us-central1-fireenjin-live.cloudfunctions.net",
   },

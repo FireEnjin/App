@@ -7,6 +7,8 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AuthService, DatabaseService, FireEnjin, FireEnjinTriggerInput } from "@fireenjin/sdk";
 import { FirebaseApp } from "@firebase/app";
+export { AuthService, DatabaseService, FireEnjin, FireEnjinTriggerInput } from "@fireenjin/sdk";
+export { FirebaseApp } from "@firebase/app";
 export namespace Components {
     interface BlockNavigation {
         "db": DatabaseService;
