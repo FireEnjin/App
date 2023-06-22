@@ -1,18 +1,29 @@
 {
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "allowUnreachableCode": false,
-    "declaration": false,
-    "experimentalDecorators": true,
-    "lib": ["dom", "es2017", "esnext.asynciterable"],
-    "moduleResolution": "node",
-    "module": "esnext",
-    "target": "es2017",
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "jsx": "react",
-    "jsxFactory": "h",
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "importHelpers": true,
+      "allowSyntheticDefaultImports": true,
+      "allowUnreachableCode": false,
+      "declaration": false,
+      "experimentalDecorators": true,
+      "lib": [
+          "dom",
+          "es2018",
+          "esnext.asynciterable"
+      ],
+      "moduleResolution": "node",
+      "module": "esnext",
+      "target": "es2018",
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "jsx": "react",
+      "jsxFactory": "h"
   },
-  "include": ["src", "../template"],
-  "exclude": ["node_modules"],
+  "include": [
+      "src"
+  ],
+  "exclude": [
+      "node_modules"
+  ]
 }
