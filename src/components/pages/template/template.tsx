@@ -56,6 +56,7 @@ export class PageTemplate {
   @Listen("fireenjinSubmit")
   async onSubmit({ detail: { endpoint, id, data } }) {
     if (endpoint === "editTemplate") {
+      console.log(endpoint);
       await this.db.update("templates", id, data);
     } else if (endpoint === "addTemplate") {
       const newTemplate = await this.db.add("templates", data);
