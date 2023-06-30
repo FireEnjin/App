@@ -33,8 +33,8 @@
   },
   "dependencies": {
     "@fireenjin/components": "^1.8.1",
-    "@fireenjin/editor": "^1.3.31",
-    "@fireenjin/mx": "^1.1.49",
+    "@fireenjin/editor": "^1.3.32",
+    "@fireenjin/mx": "^1.1.50",
     "@fireenjin/sdk": "^1.4.6",
     "@ionic/core": "^6.7.4",
     "@stencil/router": "^1.0.1",
