@@ -317,6 +317,19 @@ export type BlockInput = {
   type?: InputMaybe<Scalars['String']['input']>;
 };
 
+/** The information for a Component document */
+export type Component = {
+  __typename?: 'Component';
+  id?: Maybe<Scalars['ID']['output']>;
+  /** The name of the Component */
+  name?: Maybe<Scalars['String']['output']>;
+};
+
+/** Editable Component data */
+export type ComponentInput = {
+  name?: InputMaybe<Scalars['String']['input']>;
+};
+
 /** The editorJS data  */
 export type Editor = {
   __typename?: 'Editor';
@@ -1076,6 +1089,7 @@ export type Mutation = {
   addAddress?: Maybe<Address>;
   addAlert?: Maybe<Alert>;
   addBatch?: Maybe<Batch>;
+  addComponent?: Maybe<Component>;
   addFlow?: Maybe<Flow>;
   addInvoice?: Maybe<Invoice>;
   addPayment?: Maybe<Payment>;
@@ -1089,6 +1103,7 @@ export type Mutation = {
   deleteAddress?: Maybe<Address>;
   deleteAlert?: Maybe<Alert>;
   deleteBatch?: Maybe<Batch>;
+  deleteComponent?: Maybe<Component>;
   deleteFlow?: Maybe<Flow>;
   deleteInvoice?: Maybe<Invoice>;
   deletePayment?: Maybe<Payment>;
@@ -1102,6 +1117,7 @@ export type Mutation = {
   editAddress?: Maybe<Address>;
   editAlert?: Maybe<Alert>;
   editBatch?: Maybe<Batch>;
+  editComponent?: Maybe<Component>;
   editFlow?: Maybe<Flow>;
   editInvoice?: Maybe<Invoice>;
   editPayment?: Maybe<Payment>;
@@ -1131,6 +1147,11 @@ export type MutationAddAlertArgs = {
 
 export type MutationAddBatchArgs = {
   data?: InputMaybe<BatchInput>;
+};
+
+
+export type MutationAddComponentArgs = {
+  data?: InputMaybe<ComponentInput>;
 };
 
 
@@ -1199,6 +1220,11 @@ export type MutationDeleteBatchArgs = {
 };
 
 
+export type MutationDeleteComponentArgs = {
+  id?: InputMaybe<Scalars['String']['input']>;
+};
+
+
 export type MutationDeleteFlowArgs = {
   id?: InputMaybe<Scalars['String']['input']>;
 };
@@ -1263,6 +1289,12 @@ export type MutationEditAlertArgs = {
 
 export type MutationEditBatchArgs = {
   data?: InputMaybe<BatchInput>;
+  id?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type MutationEditComponentArgs = {
+  data?: InputMaybe<ComponentInput>;
   id?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -1487,6 +1519,10 @@ export type Query = {
   batch?: Maybe<Batch>;
   /** Get a list of Batch documents from the Batches collection. */
   batches?: Maybe<Array<Batch>>;
+  /** Get a specific Component document from the Components collection. */
+  component?: Maybe<Component>;
+  /** Get a list of Component documents from the Components collection. */
+  components?: Maybe<Array<Component>>;
   /** Get a specific Feed document from the Feeds collection. */
   feed?: Maybe<Feed>;
   /** Get a list of Feed documents from the Feeds collection. */
@@ -1576,6 +1612,16 @@ export type QueryBatchArgs = {
 
 
 export type QueryBatchesArgs = {
+  data?: InputMaybe<ListQueryInput>;
+};
+
+
+export type QueryComponentArgs = {
+  id?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryComponentsArgs = {
   data?: InputMaybe<ListQueryInput>;
 };
 

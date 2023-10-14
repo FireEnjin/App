@@ -6,6 +6,9 @@ import sendTemplateEmail from "./contracts/template/sendTemplateEmail";
 import addTrigger from "./contracts/trigger/addTrigger";
 import editTrigger from "./contracts/trigger/editTrigger";
 import deleteTrigger from "./contracts/trigger/deleteTrigger";
+import addComponent from "./contracts/component/addComponent";
+import deleteComponent from "./contracts/component/deleteComponent";
+import editComponent from "./contracts/component/editComponent";
 
 export default function submitController(db: DatabaseService) {
   return async (endpoint, input: any) => {
@@ -24,6 +27,18 @@ export default function submitController(db: DatabaseService) {
       const template = await deleteTemplate(db, id);
       return {
         deleteTemplate: template,
+      };
+    } else if (endpoint === "addComponent") {
+      return {
+        addComponent: await addComponent(db, data),
+      };
+    } else if (endpoint === "editComponent") {
+      return {
+        editComponent: await editComponent(db, id, data),
+      };
+    } else if (endpoint === "deleteComponent") {
+      return {
+        deleteComponent: await deleteComponent(db, id),
       };
     } else if (endpoint === "sendTemplateEmail") {
       return {

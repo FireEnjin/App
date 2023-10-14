@@ -38,6 +38,7 @@ export class Router {
       console.log(operationName);
       return action();
     },
+    debug: true,
     onSubmit: submitController(this.db),
     onFetch: fetchController(this.db),
     connections: [
@@ -101,6 +102,11 @@ export class Router {
             url="/login"
             component="page-home"
             componentProps={{ auth: this.auth }}
+          />
+          <ion-route
+            url="/components/:componentId"
+            component="page-component"
+            componentProps={{ app: this.app, db: this.db }}
           />
           <ion-route url="/templates" component="page-template-list" />
           <ion-route

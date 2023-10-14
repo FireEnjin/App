@@ -29,6 +29,10 @@ export namespace Components {
     interface ModalLogin {
         "auth": AuthService;
     }
+    interface PageComponent {
+        "componentId": string;
+        "db": DatabaseService;
+    }
     interface PageHome {
     }
     interface PageProjects {
@@ -86,6 +90,12 @@ declare global {
         prototype: HTMLModalLoginElement;
         new (): HTMLModalLoginElement;
     };
+    interface HTMLPageComponentElement extends Components.PageComponent, HTMLStencilElement {
+    }
+    var HTMLPageComponentElement: {
+        prototype: HTMLPageComponentElement;
+        new (): HTMLPageComponentElement;
+    };
     interface HTMLPageHomeElement extends Components.PageHome, HTMLStencilElement {
     }
     var HTMLPageHomeElement: {
@@ -128,6 +138,7 @@ declare global {
         "fireenjin-app-router": HTMLFireenjinAppRouterElement;
         "modal-add-project": HTMLModalAddProjectElement;
         "modal-login": HTMLModalLoginElement;
+        "page-component": HTMLPageComponentElement;
         "page-home": HTMLPageHomeElement;
         "page-projects": HTMLPageProjectsElement;
         "page-template": HTMLPageTemplateElement;
@@ -156,6 +167,10 @@ declare namespace LocalJSX {
     interface ModalLogin {
         "auth"?: AuthService;
     }
+    interface PageComponent {
+        "componentId"?: string;
+        "db"?: DatabaseService;
+    }
     interface PageHome {
         "onFireenjinTrigger"?: (event: PageHomeCustomEvent<FireEnjinTriggerInput>) => void;
     }
@@ -181,6 +196,7 @@ declare namespace LocalJSX {
         "fireenjin-app-router": FireenjinAppRouter;
         "modal-add-project": ModalAddProject;
         "modal-login": ModalLogin;
+        "page-component": PageComponent;
         "page-home": PageHome;
         "page-projects": PageProjects;
         "page-template": PageTemplate;
@@ -198,6 +214,7 @@ declare module "@stencil/core" {
             "fireenjin-app-router": LocalJSX.FireenjinAppRouter & JSXBase.HTMLAttributes<HTMLFireenjinAppRouterElement>;
             "modal-add-project": LocalJSX.ModalAddProject & JSXBase.HTMLAttributes<HTMLModalAddProjectElement>;
             "modal-login": LocalJSX.ModalLogin & JSXBase.HTMLAttributes<HTMLModalLoginElement>;
+            "page-component": LocalJSX.PageComponent & JSXBase.HTMLAttributes<HTMLPageComponentElement>;
             "page-home": LocalJSX.PageHome & JSXBase.HTMLAttributes<HTMLPageHomeElement>;
             "page-projects": LocalJSX.PageProjects & JSXBase.HTMLAttributes<HTMLPageProjectsElement>;
             "page-template": LocalJSX.PageTemplate & JSXBase.HTMLAttributes<HTMLPageTemplateElement>;
