@@ -4,10 +4,10 @@ import Fuse from "fuse.js";
 import state from "../../../store";
 
 @Component({
-  tag: "page-template-list",
-  styleUrl: "template-list.css",
+  tag: "page-trigger-list",
+  styleUrl: "trigger-list.css",
 })
-export class PageTemplateList {
+export class PageTriggerList {
   filterBarEl: any;
 
   @State() searchResults: any[];
@@ -24,11 +24,7 @@ export class PageTemplateList {
     user.lastName = "Johnson";
     console.log(await user.save());
     const query = event?.target?.value;
-    if (!state.templates?.length || !query?.length) {
-      this.searchResults = null;
-      return;
-    }
-    const fuse = new Fuse(state.templates, {
+    const fuse = new Fuse(state?.triggers || [], {
       keys: ["subject", "description"],
     });
     this.searchResults = await fuse.search(query).map((result) => result?.item);
@@ -40,7 +36,7 @@ export class PageTemplateList {
   }
 
   render() {
-    const templates = this.searchResults || state.templates || [];
+    const triggers = this.searchResults || state?.triggers || [];
 
     return [
       <ion-content>
@@ -71,13 +67,13 @@ export class PageTemplateList {
             fill="solid"
             color="primary"
             shape="round"
-            href="/templates/new"
+            href="/triggers/new"
           >
             Add
           </ion-button>
         </div>
         <ion-list class="ion-no-padding">
-          {templates
+          {triggers
             .sort(function (a: any, b: any) {
               var subjectA = a?.subject?.toUpperCase?.() || "";
               var subjectB = b?.subject?.toUpperCase?.() || "";
@@ -104,14 +100,14 @@ export class PageTemplateList {
               // names must be equal
               return 0;
             })
-            .map((template, index) => [
-              templates?.[index - 1]?.type !== template?.type && (
-                <ion-item-divider>{template.type}</ion-item-divider>
+            .map((trigger, index) => [
+              triggers?.[index - 1]?.type !== trigger?.type && (
+                <ion-item-divider>{trigger.type}</ion-item-divider>
               ),
-              <ion-item href={`/templates/${template?.id}`} detail>
+              <ion-item href={`/triggers/${trigger?.id}`} detail>
                 <ion-label>
-                  <h2>{template?.subject || template?.id || ""}</h2>
-                  <p>{template?.description || "No Description on File..."}</p>
+                  <h2>{trigger?.subject || trigger?.id || ""}</h2>
+                  <p>{trigger?.description || "No Description on File..."}</p>
                 </ion-label>
               </ion-item>,
             ])}

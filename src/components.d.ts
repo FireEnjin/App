@@ -41,6 +41,11 @@ export namespace Components {
     }
     interface PageTemplateList {
     }
+    interface PageTrigger {
+        "triggerId": string;
+    }
+    interface PageTriggerList {
+    }
 }
 export interface PageHomeCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -105,6 +110,18 @@ declare global {
         prototype: HTMLPageTemplateListElement;
         new (): HTMLPageTemplateListElement;
     };
+    interface HTMLPageTriggerElement extends Components.PageTrigger, HTMLStencilElement {
+    }
+    var HTMLPageTriggerElement: {
+        prototype: HTMLPageTriggerElement;
+        new (): HTMLPageTriggerElement;
+    };
+    interface HTMLPageTriggerListElement extends Components.PageTriggerList, HTMLStencilElement {
+    }
+    var HTMLPageTriggerListElement: {
+        prototype: HTMLPageTriggerListElement;
+        new (): HTMLPageTriggerListElement;
+    };
     interface HTMLElementTagNameMap {
         "block-navigation": HTMLBlockNavigationElement;
         "fireenjin-app-icon": HTMLFireenjinAppIconElement;
@@ -115,6 +132,8 @@ declare global {
         "page-projects": HTMLPageProjectsElement;
         "page-template": HTMLPageTemplateElement;
         "page-template-list": HTMLPageTemplateListElement;
+        "page-trigger": HTMLPageTriggerElement;
+        "page-trigger-list": HTMLPageTriggerListElement;
     }
 }
 declare namespace LocalJSX {
@@ -151,6 +170,11 @@ declare namespace LocalJSX {
     }
     interface PageTemplateList {
     }
+    interface PageTrigger {
+        "triggerId"?: string;
+    }
+    interface PageTriggerList {
+    }
     interface IntrinsicElements {
         "block-navigation": BlockNavigation;
         "fireenjin-app-icon": FireenjinAppIcon;
@@ -161,6 +185,8 @@ declare namespace LocalJSX {
         "page-projects": PageProjects;
         "page-template": PageTemplate;
         "page-template-list": PageTemplateList;
+        "page-trigger": PageTrigger;
+        "page-trigger-list": PageTriggerList;
     }
 }
 export { LocalJSX as JSX };
@@ -176,6 +202,8 @@ declare module "@stencil/core" {
             "page-projects": LocalJSX.PageProjects & JSXBase.HTMLAttributes<HTMLPageProjectsElement>;
             "page-template": LocalJSX.PageTemplate & JSXBase.HTMLAttributes<HTMLPageTemplateElement>;
             "page-template-list": LocalJSX.PageTemplateList & JSXBase.HTMLAttributes<HTMLPageTemplateListElement>;
+            "page-trigger": LocalJSX.PageTrigger & JSXBase.HTMLAttributes<HTMLPageTriggerElement>;
+            "page-trigger-list": LocalJSX.PageTriggerList & JSXBase.HTMLAttributes<HTMLPageTriggerListElement>;
         }
     }
 }

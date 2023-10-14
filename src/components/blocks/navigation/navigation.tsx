@@ -29,6 +29,11 @@ export class BlockNavigation {
       icon: "create",
       href: "/templates",
     },
+    {
+      label: "Triggers",
+      icon: "flash",
+      href: "/triggers",
+    },
   ];
 
   @State() activeLink: string;

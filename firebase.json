@@ -50,6 +50,21 @@
       ]
     },
     {
+      "site": "emefyi",
+      "public": "projects/eme.fyi",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "function": "render"
+        }
+      ]
+    },
+    {
       "target": "live",
       "public": "www",
       "ignore": [

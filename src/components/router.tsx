@@ -9,6 +9,8 @@ import { Build, Component, Listen, h } from "@stencil/core";
 import { initializeApp } from "@firebase/app";
 import env from "../helpers/env";
 import state from "../store";
+import submitController from "../submit";
+import fetchController from "../fetch";
 
 @Component({
   tag: "fireenjin-app-router",
@@ -36,6 +38,8 @@ export class Router {
       console.log(operationName);
       return action();
     },
+    onSubmit: submitController(this.db),
+    onFetch: fetchController(this.db),
     connections: [
       {
         name: "default",
@@ -62,7 +66,7 @@ export class Router {
 
   componentWillLoad() {
     if (!Build?.isBrowser) return;
-
+    (window as any).db = this.db;
     this.auth.onAuthChanged(async (session) => {
       console.log(session);
       state.session = session;
@@ -80,6 +84,7 @@ export class Router {
           );
 
         state.templates = await this.db.list("templates", []);
+        state.triggers = await this.db.list("triggers", []);
       } else {
         // NOT LOGGED IN
       }
@@ -101,6 +106,12 @@ export class Router {
           <ion-route
             url="/templates/:templateId"
             component="page-template"
+            componentProps={{ app: this.app, db: this.db }}
+          />
+          <ion-route url="/triggers" component="page-trigger-list" />
+          <ion-route
+            url="/triggers/:triggerId"
+            component="page-trigger"
             componentProps={{ app: this.app, db: this.db }}
           />
         </ion-router>

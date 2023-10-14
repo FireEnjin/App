@@ -125,6 +125,9 @@ const { state, onChange } = createStore({
   localStorage.getItem("fireenjin:isPreviewing")
     ? JSON.parse(localStorage.getItem("fireenjin:isPreviewing"))
     : false) as boolean,
+  triggers: (localStorage?.getItem && localStorage.getItem("fireenjin:triggers")
+    ? JSON.parse(localStorage.getItem("fireenjin:triggers"))
+    : []) as any[],
 });
 
 onChange("session", (value) => {
