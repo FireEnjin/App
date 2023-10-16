@@ -29,7 +29,9 @@ export class PageComponent {
         >
           <fireenjin-code-editor
             name="code"
+            language="mdx"
             value={this.component?.code || ""}
+            autoExpand
           />
         </fireenjin-form>
       </ion-content>
