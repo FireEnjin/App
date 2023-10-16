@@ -86,6 +86,10 @@
           "function": "render"
         },
         {
+          "source": "/component/**",
+          "function": "renderComponent"
+        },
+        {
           "source": "/upload",
           "function": "upload"
         },
