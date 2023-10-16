@@ -15,6 +15,7 @@ export class PageComponent {
 
   @State() component: any;
   @State() mouseDown = false;
+  @State() cache = Date.now();
 
   @Listen("mouseup")
   @Listen("touchend")
@@ -39,6 +40,14 @@ export class PageComponent {
   async componentDidLoad() {
     if (!Build?.isBrowser) return;
     this.component = await this.db.find("components", this.componentId);
+    this.db.watchDocument(
+      `components/${this.componentId}/render`,
+      "latest",
+      (render) => {
+        if (!render) return;
+        this.cache = Date.now();
+      }
+    );
   }
 
   render() {
@@ -81,6 +90,7 @@ export class PageComponent {
                 bottom: "0",
                 pointerEvents: "none",
               }}
+              src={`https://us-central1-fireenjin-live.cloudfunctions.net/renderComponent?componentId=${this.componentId}&cache=${this.cache}`}
             />
           </div>
         </div>
